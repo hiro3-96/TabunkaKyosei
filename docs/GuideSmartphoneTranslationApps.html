@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スマホ翻訳アプリ活用ガイド</title>
+    <style>
+        :root {
+            --primary-color: #5b7b9a; /* プライマリカラー (濃い青) */
+            --secondary-color: #f0f5fa; /* セカンダリカラー (薄い青) */
+            --accent-color: #3d5a80; /* アクセントカラー (さらに濃い青) */
+            --text-color: #333; /* 基本テキストカラー (濃いグレー) */
+            --light-text: #fff; /* 明るいテキストカラー (白) */
+            --border-color: #d1e0ed; /* ボーダーカラー (薄いグレーブルー) */
+            --highlight: #ffedd6; /* ハイライトカラー (薄いオレンジ) */
+            --shadow: rgba(0, 0, 0, 0.1); /* 影の色 */
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9fbfd; /* 全体の背景色 (非常に薄い青) */
+            margin: 0;
+            padding: 0;
+            font-size: 18px; /* 基本フォントサイズ */
+        }
+
+        .container {
+            max-width: 1000px; /* コンテンツの最大幅 */
+            margin: 0 auto; /* 中央寄せ */
+            padding: 20px; /* コンテナ内の余白 */
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0; /* 上部の角丸 */
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px var(--shadow); /* ヘッダーの影 */
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: var(--accent-color);
+            border-bottom: 3px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .intro {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 20px;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tab-button {
+            background-color: #fff; /* 非アクティブタブの背景色 */
+            border: 2px solid var(--border-color);
+            border-bottom: none; /* 下線はつけない */
+            border-radius: 10px 10px 0 0; /* タブの上部角丸 */
+            padding: 15px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--text-color);
+            cursor: pointer;
+            margin-right: 5px;
+            transition: all 0.3s ease; /* スムーズな切り替え効果 */
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color); /* アクティブタブの背景色 */
+            color: var(--light-text); /* アクティブタブの文字色 */
+            border-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none; /* 初期状態では非表示 */
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 0 0 10px 10px; /* タブコンテンツの下部角丸 */
+            box-shadow: 0 2px 4px var(--shadow);
+            border: 2px solid var(--border-color);
+            border-top: none; /* 上の線はタブ側にあるため不要 */
+            margin-bottom: 30px;
+        }
+
+        .tab-content.active {
+            display: block; /* アクティブなタブコンテンツを表示 */
+        }
+
+        .common-content {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px var(--shadow);
+            margin-bottom: 30px;
+            border: 2px solid var(--border-color);
+        }
+
+        .step {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color); /* ステップの左側にアクセント線 */
+        }
+
+        .step-number {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .tip {
+            background-color: var(--highlight);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f7c675; /* ヒントの左側にアクセント線 */
+        }
+
+        .note {
+            background-color: #e6f3ff; /* 注意書きの背景色 */
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-size: 16px;
+            border-left: 5px solid #7eb1dc; /* 注意書きの左側にアクセント線 */
+        }
+
+        .icon {
+            font-weight: bold;
+            font-size: 24px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .collapsible {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: 2px solid var(--border-color);
+            text-align: left;
+            outline: none;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: 0.4s;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible:hover {
+            background-color: #e1eaf3; /* ホバー時の背景色 */
+        }
+
+        .collapsible:after {
+            content: '＋'; /* 初期状態はプラス記号 */
+            font-size: 22px;
+            color: var(--accent-color);
+        }
+
+        .active-collapse:after {
+            content: '−'; /* アクティブ時はマイナス記号 */
+        }
+
+        .content-collapse {
+            padding: 0 18px;
+            max-height: 0; /* 初期状態では非表示 */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* スムーズな開閉アニメーション */
+            background-color: white;
+            border-radius: 0 0 10px 10px;
+            border: 2px solid var(--border-color);
+            border-top: none;
+            margin-top: -10px; /* ボタンとの隙間を調整 */
+            margin-bottom: 20px;
+        }
+
+        .conversation-example {
+            background-color: #f9f9f9; /* 会話例の背景色 */
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .conversation-speaker {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .emphasis {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 20px;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-text); /* フッター全体の文字色を白に */
+            text-align: center;
+            padding: 30px;
+            border-radius: 0 0 10px 10px; /* 下部の角丸 */
+            margin-top: 50px;
+            font-size: 22px;
+        }
+
+        /* フッター内のh2も明示的に白文字に (親要素から継承されるが念のため) */
+        .footer h2 {
+            color: var(--light-text);
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .important-note {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0;
+            color: var(--light-text); /* 文字色を白に変更 */
+        }
+
+        .app-section {
+            border-left: 5px solid var(--primary-color);
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .app-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px; /* モバイルではフォントサイズを少し小さく */
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .intro {
+                font-size: 18px;
+            }
+
+            .tab-button {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            .collapsible {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>スマホ翻訳アプリ活用ガイド</h1>
+            <p class="subtitle">言葉の壁を越えて、もっとつながろう！</p>
+            <p><strong>～iPhone「翻訳」＆「Google翻訳」会話モード活用術～</strong></p>
+        </header>
+
+        <section class="intro">
+            <h2>はじめに：なぜ翻訳アプリ？</h2>
+            <p>言葉が通じなくても大丈夫！スマートフォン一つで、世界中の人たちとコミュニケーションが取れる時代です。このガイドを参考に、イベントをもっと楽しみ、新しい出会いを広げましょう！特に<span class="emphasis">「会話モード」</span>を使えば、リアルタイムでスムーズなやり取りが可能です。</p>
+        </section>
+
+        <section class="common-content">
+            <h2>まずは準備！2つの人気翻訳アプリ</h2>
+
+            <div class="app-section">
+                <div class="app-title">iPhone標準「翻訳」アプリ</div>
+                <ul>
+                    <li><span class="emphasis">iPhoneには標準でインストールされています</span></li>
+                    <li>見つからない場合：「App Store」で「翻訳」と検索してください</li>
+                </ul>
+            </div>
+
+            <div class="app-section">
+                <div class="app-title">Google翻訳アプリ</div>
+                <ul>
+                    <li><span class="emphasis">多言語対応、カメラ翻訳なども充実</span></li>
+                    <li>iPhone：「App Store」で「Google翻訳」と検索してダウンロード</li>
+                    <li>Android：標準でインストールされている場合が多いです</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                <p>注意： スマートフォンの機種やOSのバージョンによって、画面表示や操作方法が若干異なる場合があります。</p>
+            </div>
+        </section>
+
+        <section class="common-content">
+            <h2>イベントでの基本的な使い方</h2>
+
+            <h3>会話モードでのコミュニケーション手順</h3>
+            <p>イベントでのコミュニケーションに最も役立つのが<span class="emphasis">「会話モード」</span>です。お互いの言葉をリアルタイムで翻訳し、スムーズな会話をサポートします。</p>
+
+            <div class="tip">
+                <h3>最初に相手の言語を確認しよう！</h3>
+                <p>スムーズな会話のため、まず相手がどの言語を話すか尋ねてみましょう。</p>
+                <p>例えば：<span class="emphasis">「こんにちは。何語を話しますか？」</span></p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'iphone-tab')">iPhone「翻訳」アプリ</button>
+                <button class="tab-button" onclick="openTab(event, 'google-tab')">Google翻訳アプリ</button>
+            </div>
+
+            <div id="iphone-tab" class="tab-content active">
+                <div class="step">
+                    <div class="step-number">1. アプリを起動する</div>
+                    <p>iPhone「翻訳」アプリを開きます</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2. 言語を設定する</div>
+                    <ul>
+                        <li>画面上部に表示される2つの言語ボタンをタップして、自分の言語と相手の言語を選びます</li>
+                        <li>相手の言語がわからない場合は仮の言語（英語など）を設定</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3. マイクを使って会話する</div>
+                    <ul>
+                        <li><span class="emphasis">自分が話す時：</span>自分の言語の横にあるマイクアイコン(🎤)をタップして話します</li>
+                        <li>話し終わると自動的に相手の言語に翻訳され、音声とテキストで結果が表示されます</li>
+                        <li><span class="emphasis">相手が話す時：</span>相手の言語の横にあるマイクアイコン(🎤)をタップしてもらい、話してもらいます</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4. 翻訳結果を共有する</div>
+                    <p>翻訳結果の吹き出しを相手に見せて内容を確認してもらいましょう</p>
+                </div>
+            </div>
+
+            <div id="google-tab" class="tab-content">
+                <div class="step">
+                    <div class="step-number">1. アプリを起動する</div>
+                    <p>Google翻訳アプリを開きます</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2. 言語を設定する</div>
+                    <p>画面上部の言語ボタンをタップして、自分の言語と相手の言語を選びます</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3. 会話モードを開始する</div>
+                    <p>画面下部中央にある「会話」アイコン（重なり合った人のデザイン）をタップ</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4. 会話を始める（手動モード）</div>
+                    <ul>
+                        <li>画面下部に2つの言語のマイクアイコンが表示されます</li>
+                        <li><span class="emphasis">自分が話す時：</span>自分の言語のマイクアイコンをタップして話します</li>
+                        <li><span class="emphasis">相手が話す時：</span>相手の言語のマイクアイコンをタップしてもらい、話してもらいます</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5. 会話を始める（自動モード）</div>
+                    <ul>
+                        <li>「会話」モード画面の中央下部にある「自動」アイコンをタップ</li>
+                        <li>どちらかが話し始めると、アプリが自動で言語を認識して翻訳します</li>
+                        <li><span class="emphasis">静かな場所での使用が効果的です</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="common-content">
+            <h2>会話モードを使いこなすコツ！</h2>
+            <ul>
+                <li><span class="emphasis">短く区切って話す：</span> 一度に長い文章を話すより、短く区切って話すと翻訳精度が上がります</li>
+                <li><span class="emphasis">相手に使い方を伝える：</span> ジェスチャーでマイクボタンの使い方を示すとスムーズです</li>
+                <li><span class="emphasis">待つ姿勢を持つ：</span> 翻訳結果が出るまで少し時間がかかる場合があります</li>
+                <li><span class="emphasis">画面を見せる：</span> 音声だけでなく、翻訳テキストも相手に見せると確実です</li>
+                <li><span class="emphasis">ゆっくり、はっきり話す：</span> 早口や曖昧な発音は認識されにくいです</li>
+            </ul>
+        </section>
+
+        <button class="collapsible">シーン別「会話モード」活用例</button>
+        <div class="content-collapse">
+            <h3>【受付・参加登録】</h3>
+            <div class="conversation-example">
+                <p><span class="conversation-speaker">スタッフ：</span>「こんにちは！参加登録は済まれていますか？」</p>
+                <p><span class="conversation-speaker">来場者：</span>「はい、オンラインで登録しました。名前は〇〇です。」</p>
+                <p><span class="conversation-speaker">スタッフ：</span>「確認できました。こちらが参加バッジです。」</p>
+            </div>
+
+            <h3>【会場案内】</h3>
+            <div class="conversation-example">
+                <p><span class="conversation-speaker">来場者：</span>「すみません、メインホールはどこですか？」</p>
+                <p><span class="conversation-speaker">スタッフ：</span>「2階にあります。このエスカレーターで上がって右側です。」</p>
+                <p><span class="conversation-speaker">来場者：</span>「ありがとうございます。プログラムは何時から始まりますか？」</p>
+                <p><span class="conversation-speaker">スタッフ：</span>「10時からです。あと15分ほどです。」</p>
+            </div>
+
+            <h3>【ワークショップ・体験】</h3>
+            <div class="conversation-example">
+                <p><span class="conversation-speaker">スタッフ：</span>「このワークショップでは、日本の伝統文化を体験できます。参加しますか？」</p>
+                <p><span class="conversation-speaker">来場者：</span>「はい、興味があります。何をするのですか？」</p>
+                <p><span class="conversation-speaker">スタッフ：</span>「書道と折り紙を体験できます。今から始められますよ。」</p>
+            </div>
+
+            <h3>【飲食・休憩エリア】</h3>
+            <div class="conversation-example">
+                <p><span class="conversation-speaker">スタッフ：</span>「こちらでお飲み物を提供しています。何がよろしいですか？」</p>
+                <p><span class="conversation-speaker">来場者：</span>「水をお願いします。食べ物は何がありますか？」</p>
+                <p><span class="conversation-speaker">スタッフ：</span>「おにぎりとサンドイッチがあります。どちらがいいですか？」</p>
+            </div>
+
+            <h3>【緊急時・困ったとき】</h3>
+            <div class="conversation-example">
+                <p><span class="conversation-speaker">スタッフ：</span>「大丈夫ですか？何かお手伝いできることはありますか？」</p>
+                <p><span class="conversation-speaker">来場者：</span>「トイレはどこですか？」または「気分が悪いです。」</p>
+                <p><span class="conversation-speaker">スタッフ：</span>「トイレはあちらです。」または「救護室にご案内します。こちらへどうぞ。」</p>
+            </div>
+        </div>
+
+        <button class="collapsible">より高度な翻訳機能の使い方</button>
+        <div class="content-collapse">
+            <div class="app-section">
+                <div class="app-title">iPhone「翻訳」アプリの高度な機能</div>
+
+                <h3>1. 対面モード</h3>
+                <p>複数人での会話に便利な対面モードです。</p>
+                <ol>
+                    <li>iPhone「翻訳」アプリを開く</li>
+                    <li>画面下部の「会話」アイコン（向かい合う吹き出し）をタップ</li>
+                    <li>画面が左右に分割され、それぞれの言語が表示される</li>
+                    <li>左上の「表示」から「対面」をタップ</li>
+                    <li>画面が上下に分割され、それぞれの言語が表示される</li>
+                    <li>自分側のマイクアイコンをタップして話す、相手側のマイクアイコンをタップして相手に話してもらう</li>
+                    <li><span class="emphasis">スマートフォンを横向きにすると、お互いに翻訳結果が見やすくなる</span></li>
+                </ol>
+
+                <h3>2. テキスト入力による翻訳</h3>
+                <p>固有名詞や複雑な内容は、キーボードで入力するとより正確です。</p>
+                <ul>
+                    <li>アプリを開き、「翻訳するテキストを入力」欄に文字を入力</li>
+                    <li>入力後、翻訳結果が下に表示され、再生ボタン(▶)で音声も聞けます</li>
+                </ul>
+
+                <h3>3. オフライン翻訳</h3>
+                <p>事前に言語データをダウンロードしておくと、インターネット接続がなくても翻訳できます。</p>
+                <ul>
+                    <li>設定アプリ > 翻訳 > ダウンロード済みの言語 で必要な言語を追加</li>
+                </ul>
+
+                <h3>4. よく使うフレーズの保存</h3>
+                <p>繰り返し使う質問や案内文を保存しておくと便利です。</p>
+                <ul>
+                    <li>翻訳結果の吹き出しを長押し > 「よく使う項目に追加」</li>
+                </ul>
+            </div>
+
+            <div class="app-section">
+                <div class="app-title">Google翻訳アプリの高度な機能</div>
+
+                <h3>1. テキスト入力による翻訳</h3>
+                <p>固有名詞や複雑な内容は、キーボードで入力するとより正確です。</p>
+                <ul>
+                    <li>アプリを開き、「テキストを入力」枠に文字を入力</li>
+                    <li>翻訳結果が自動で表示され、スピーカーアイコン(🔊)で音声も聞けます</li>
+                </ul>
+
+                <h3>2. カメラ翻訳機能</h3>
+                <p>パンフレットや案内板などの文字をカメラで読み取って翻訳できます。</p>
+                <ol>
+                    <li>Google翻訳アプリを開き、カメラアイコンをタップ</li>
+                    <li>翻訳したい文字にカメラを向ける</li>
+                    <li>画面上に翻訳結果がリアルタイムで表示されます</li>
+                </ol>
+
+                <h3>3. オフライン翻訳</h3>
+                <p>事前に言語データをダウンロードしておくと、インターネット接続がなくても翻訳できます。</p>
+                <ul>
+                    <li>アプリ右上のアカウントアイコン > ダウンロード済みの言語 > 言語を選択してダウンロード</li>
+                </ul>
+
+                <h3>4. よく使うフレーズの保存</h3>
+                <p>繰り返し使う質問や案内文を保存しておくと便利です。</p>
+                <ul>
+                    <li>翻訳結果の右側にあるスターマーク(☆)をタップ</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="common-content">
+            <h2>心構えと注意点</h2>
+            <ul>
+                <li><span class="emphasis">完璧を求めすぎない：</span> 翻訳アプリは便利ですが、100%正確ではありません。コミュニケーションを取ろうとする姿勢が大切です</li>
+                <li><span class="emphasis">笑顔とジェスチャーも活用：</span> 非言語コミュニケーションも積極的に使いましょう</li>
+                <li><span class="emphasis">文化の違いを尊重：</span> 直訳だけでは伝わらない場合もあります。相手の文化を尊重する気持ちを持ちましょう</li>
+                <li><span class="emphasis">バッテリー残量に注意：</span> 翻訳アプリは電池を消費します。モバイルバッテリーがあると安心です</li>
+                <li><span class="emphasis">事前準備が大切：</span> イベント前に言語データのダウンロードやアプリの動作確認をしておきましょう</li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            <h2>さいごに：翻訳アプリは、あなたの心強い味方です！</h2>
+            <p>積極的に翻訳アプリを活用して、たくさんの人と交流し、素晴らしい体験を共有しましょう。言葉の壁を越えて、多文化共生の輪を広げていきましょう！</p>
+            <p class="important-note">さあ、使ってみよう！Let's try!</p>
+        </div>
+    </div>
+
+    <script>
+        // 折りたたみセクションの動作
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active-collapse");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+
+        // タブ切り替え機能
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+
+            // すべてのタブコンテンツを非表示にする
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // すべてのタブボタンから "active" クラスを削除する
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+
+            // クリックされたタブコンテンツを表示し、そのボタンに "active" クラスを追加する
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
