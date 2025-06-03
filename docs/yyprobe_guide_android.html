@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YYProbe Android版 初心者向けスタートガイド</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            color: #2d3748;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        h3 {
+            color: #4a5568;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .step {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 14px;
+        }
+        
+        .step-content {
+            margin-top: 10px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #fef5e7 0%, #fff2cc 100%);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f6ad55;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+        
+        .warning {
+            background: linear-gradient(120deg, #fed7d7 0%, #feb2b2 100%);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #fc8181;
+            margin: 15px 0;
+        }
+        
+        .warning::before {
+            content: "⚠️ ";
+            font-weight: bold;
+        }
+        
+        .button-style {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 2px;
+            border: none;
+            font-size: 14px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .success-message {
+            background: linear-gradient(120deg, #c6f6d5 0%, #9ae6b4 100%);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #68d391;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .intro {
+            background: linear-gradient(120deg, #e6fffa 0%, #b2f5ea 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4fd1c7;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎤 YYProbe Android版<br>初心者向けスタートガイド</h1>
+        
+        <div class="intro">
+            <p><strong>🌟 このガイドについて</strong></p>
+            <p>初めてYYProbeを使う方向けに、アプリのダウンロードから音声認識の開始まで、<br>わかりやすく手順を説明します。</p>
+            <p><em>※ 無料版（Lite版）のお試しモード（ユーザー登録不要）を前提としています</em></p>
+        </div>
+
+        <h2>📱 アプリをダウンロードしよう</h2>
+        
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>アプリをインストール</h3>
+                <p>提供されたリンクをタップして、アプリのダウンロード画面に移動します。</p>
+                <p><span class="button-style">インストール</span> ボタンをタップしてダウンロードを開始してください。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>アプリを起動</h3>
+                <p>ダウンロードが完了したら、<span class="button-style">開く</span> ボタンをタップしてYYProbeを起動します。</p>
+            </div>
+        </div>
+
+        <h2>🚀 アプリを開始しよう</h2>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>無料版を選択</h3>
+                <p><span class="button-style">YYProbe Lite（無料）を開始する</span> をタップします。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>利用規約に同意</h3>
+                <p>利用規約が表示されるので、内容をよく読んでから、画面を一番下までスクロールして <span class="button-style">承諾</span> をタップします。</p>
+            </div>
+        </div>
+
+        <h2>⚙️ アプリの許可設定をしよう</h2>
+        
+        <div class="highlight">
+            <p><strong>📋 許可設定について</strong></p>
+            <p>以下の設定は、アプリの機能を正常に使用するために必要です。それぞれの許可について説明します。</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h3>📷 写真と動画の撮影許可</h3>
+                <p>写真と動画の撮影をYYProbeに許可するかを問われます。</p>
+                <p>お好みに応じてボタンをタップしてください（任意設定）。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">6</div>
+            <div class="step-content">
+                <h3>🎤 音声録音の許可（重要）</h3>
+                <p>音声の録音許可を求められます。</p>
+                <p><span class="button-style">アプリの使用時のみ</span> を必ずタップしてください。</p>
+                
+                <div class="warning">
+                    <strong>注意：</strong> この許可をしないと音声認識を開始することができません。
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">7</div>
+            <div class="step-content">
+                <h3>📡 付近のデバイス検出許可</h3>
+                <p>付近のデバイスの検出等をYYProbeに許可するかを問われます。</p>
+                <p>お好みに応じてボタンをタップしてください。</p>
+                
+                <div class="highlight">
+                    <strong>💡 ヒント：</strong> 許可すると、Bluetoothなどの外部マイクで音声認識ができるようになります。
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">8</div>
+            <div class="step-content">
+                <h3>📁 写真・メディアアクセス許可</h3>
+                <p>デバイス内の写真やメディアへのアクセス許可を求められます。</p>
+                <p>お好みに応じてボタンをタップしてください。</p>
+                
+                <div class="highlight">
+                    <strong>💡 ヒント：</strong> 許可すると、会議中に写真やファイルを投稿することができます。
+                </div>
+            </div>
+        </div>
+
+        <h2>👤 お試しモードでログインしよう</h2>
+        
+        <div class="step">
+            <div class="step-number">9</div>
+            <div class="step-content">
+                <h3>お試しモードを選択</h3>
+                <p>すべての許可設定が完了すると、ログイン画面が表示されます。</p>
+                <p>ユーザー登録をせずにすぐに試したい場合は、<span class="button-style">ユーザー登録せずに試用する</span> をタップします。</p>
+                
+                <div class="highlight">
+                    <strong>🎉 お試しモードの特徴</strong>
+                    <ul>
+                        <li>ユーザー登録不要</li>
+                        <li>すぐに音声認識を試すことができます</li>
+                        <li>アプリの使用感を確認できます</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>🎯 開催中の会議に参加しよう</h2>
+        
+        <div class="step">
+            <div class="step-number">10</div>
+            <div class="step-content">
+                <h3>会議コードで参加</h3>
+                <p>他の人が主催している会議に参加する場合は、以下の手順で行います：</p>
+                <ol>
+                    <li>会議主催者から<strong>6桁の招待コード</strong>を受け取ります</li>
+                    <li>ホーム画面の<span class="button-style">会議コードで参加</span>をタップします</li>
+                    <li>受け取った6桁の会議コードを入力します</li>
+                    <li>会議に参加完了です</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2>🎤 音声認識を開始しよう</h2>
+        
+        <div class="step">
+            <div class="step-number">11</div>
+            <div class="step-content">
+                <h3>音声認識の開始</h3>
+                <p>会議に参加すると、文字起こし画面が表示されます。</p>
+                <p>音声認識を開始するには、画面下にある<strong>🎤 マイクアイコン</strong>をタップします。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">12</div>
+            <div class="step-content">
+                <h3>認識状態の確認</h3>
+                <p>マイクアイコンが変わったら、音声認識中の合図です。</p>
+                <p>音声認識を停止したい場合は、もう一度マイクアイコンをタップします。</p>
+            </div>
+        </div>
+
+        <div class="success-message">
+            <h3>🎊 セットアップ完了！</h3>
+            <p>これでYYProbeの基本的な使い方の準備が整いました。<br>音声認識機能をお試しください！</p>
+        </div>
+
+        <div class="highlight">
+            <p><strong>📚 次のステップ</strong></p>
+            <p>より詳細な機能を使いたい場合は、ユーザー登録を行うことで、会議の主催や招待機能などが利用できるようになります。</p>
+        </div>
+    </div>
+</body>
+</html>

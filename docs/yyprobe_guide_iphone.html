@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YYProbe iPhone用アプリ操作ガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic Medium', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .step {
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .step-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .substep {
+            margin: 20px 0;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 3px solid #4facfe;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .substep:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .substep::before {
+            content: '●';
+            color: #4facfe;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .important-note {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.2);
+        }
+        
+        .important-note::before {
+            content: '⚠️ ';
+            font-size: 1.2em;
+        }
+        
+        .tip {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(168, 237, 234, 0.2);
+        }
+        
+        .tip::before {
+            content: '💡 ';
+            font-size: 1.2em;
+        }
+        
+        .button-style {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 3px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .step-title {
+                font-size: 1.5em;
+            }
+            
+            .step-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>YYProbe iPhone用アプリ</h1>
+            <p>初心者向け操作ガイド（お試しモード）</p>
+        </div>
+        
+        <div class="content">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h2 class="step-title">アプリをダウンロードしよう</h2>
+                <div class="step-content">
+                    <div class="substep">
+                        専用のリンクをタップして、アプリのダウンロード画面に移動します
+                    </div>
+                    <div class="substep">
+                        画面に表示される<span class="button-style">入手</span>ボタンをタップします
+                    </div>
+                    <div class="substep">
+                        ダウンロードが完了したら<span class="button-style">開く</span>をタップして、YYProbeアプリを起動します
+                    </div>
+                    <div class="substep">
+                        初回起動時にマイクへのアクセス許可が求められるので、<span class="button-style">OK</span>をタップします
+                    </div>
+                    <div class="important-note">
+                        マイクのアクセス許可をしないと、音声認識機能が使用できませんのでご注意ください
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h2 class="step-title">お試しモードでアプリを使ってみよう</h2>
+                <div class="step-content">
+                    <div class="substep">
+                        <span class="button-style">YYProbe Lite（無料）を開始する</span>をタップします
+                    </div>
+                    <div class="substep">
+                        利用規約が表示されるので、内容をお読みください
+                    </div>
+                    <div class="substep">
+                        画面を一番下までスクロールして<span class="button-style">利用規約に同意します</span>をタップします
+                    </div>
+                    <div class="substep">
+                        <span class="button-style">閉じる</span>をタップして規約画面を閉じます
+                    </div>
+                    <div class="substep">
+                        <span class="button-style">ユーザー登録せずに試用する</span>をタップします
+                    </div>
+                    <div class="tip">
+                        このお試しモードなら、面倒なユーザー登録なしですぐにアプリを体験できます！
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h2 class="step-title">開催中の会議に参加しよう</h2>
+                <div class="step-content">
+                    <div class="substep">
+                        ホーム画面で<span class="button-style">開催中の会議に参加する</span>をタップします
+                    </div>
+                    <div class="substep">
+                        会議主催者から受け取った6桁のコードを入力します
+                    </div>
+                    <div class="substep">
+                        正しいコードを入力すると、自動的に会議に参加できます
+                    </div>
+                    <div class="tip">
+                        会議コードは主催者が「会議を始める」を選択した際に発行される6桁の数字です
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <h2 class="step-title">音声認識を開始しよう</h2>
+                <div class="step-content">
+                    <div class="substep">
+                        会議に参加すると、文字起こし画面が表示されます
+                    </div>
+                    <div class="substep">
+                        画面左下にある紫色のマイクアイコンをタップして音声認識を開始します
+                    </div>
+                    <div class="substep">
+                        マイクアイコンが赤色に変わったら、音声認識が開始された合図です
+                    </div>
+                    <div class="substep">
+                        話した内容がリアルタイムで画面に文字として表示されます
+                    </div>
+                    <div class="substep">
+                        音声認識を停止したい場合は、もう一度マイクアイコンをタップします
+                    </div>
+                    <div class="tip">
+                        複数人での会議では、それぞれが音声認識を開始することで、発言者ごとに内容を記録できます
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>これで基本的な操作は完了です。音声認識機能を活用して、効率的な会議記録をお楽しみください！</p>
+        </div>
+    </div>
+</body>
+</html>
